@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 중개 수수료가 얼만지 질의하는 컨트롤러 */
+ * 중개 수수료가 얼만지 질의(조회)하는 컨트롤러
+ * */
 
 @RestController
 public class BrokerageQueryController {
@@ -28,7 +29,7 @@ public class BrokerageQueryController {
         if(actionType == ActionType.RENT){
             RentBrokeragePolicy policy = new RentBrokeragePolicy();
             return policy.calculate(price);
-        }  타입을 처리하는 부분은 최대한 Factory에서만 clean하게 분기될 수 있도록 -> */
+        }  //FIXME 타입을 처리하는 부분은 최대한 Factory에서만 clean하게 분기될 수 있도록 -> */
         BrokeragePolicy policy = BrokeragePolicyFactory.of(actionType);
         return policy.calculate(price);
     }
