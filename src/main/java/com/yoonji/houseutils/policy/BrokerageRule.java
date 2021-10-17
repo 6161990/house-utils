@@ -1,24 +1,29 @@
 package com.yoonji.houseutils.policy;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.lang.Nullable;
 
 /**
  * 가격이 특정 범위일 때 상한 효율과 상한금액을 가지는 클래스
  */
+@Getter
 @AllArgsConstructor
 public class BrokerageRule {
-
-    private Double brokeragePercent;
+    private Long lessThan; // 해당 금액 미만이면
+    private Double brokeragePercent; //이 퍼센트를 가지고
 
     @Nullable
-    private Long limitAmount;
+    private Long limitAmount;  // 이 금액으로 수수료가 측정됨 (BrokerageRule 클래스 개선)
 
+    public BrokerageRule(Long lessThan, Double brokeragePercent){
+        this(lessThan, brokeragePercent, Long.MAX_VALUE);
+    }
 
     public Long calcMaxBrokerage(Long price){
-        if(limitAmount == null) {
+     /*   if(limitAmount == null) {
             return multiplyPercent(price); // 큰 금액들에 대해서는 상한 효율이 없었음
-        }
+        }*/
         return Math.min(multiplyPercent(price), limitAmount); //상한 금액이 있는 경우
     }
 
