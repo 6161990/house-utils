@@ -2,11 +2,7 @@ package com.yoonji.houseUtils.policy;
 /**
  * 임대일 때, 중계 수수료를 계산한다.
  * */
-public class RentBrokeragePolicy {
-    public Long calculate(Long price){
-        BrokerageRule rule = createBrokerageRule(price);
-        return rule.calcMaxBrokerage(price);
-    }
+public class RentBrokeragePolicy implements BrokeragePolicy{
 
     public BrokerageRule createBrokerageRule(Long price) {
         BrokerageRule rule;
