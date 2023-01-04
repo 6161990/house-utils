@@ -1,10 +1,10 @@
-package com.yoonji.houseutils;
+package com.yoonji.houseUtils;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HouseutilsApplicationTests {
+class HouseUtilsApplicationTests {
 
     @Test
     void contextLoads() {
