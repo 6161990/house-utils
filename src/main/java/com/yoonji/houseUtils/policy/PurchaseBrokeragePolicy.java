@@ -7,15 +7,15 @@ public class PurchaseBrokeragePolicy implements BrokeragePolicy{
     public BrokerageRule createBrokerageRule(Long price) {
         BrokerageRule rule;
         if(price < 50_000_000){
-            rule = new BrokerageRule(0.6, 250_000L);
+            rule = new BrokerageRule(50_000_000L, 0.6, 250_000L);
         }else if(price < 200_000_000){
-            rule = new BrokerageRule(0.5, 800_000L);
+            rule = new BrokerageRule(200_000_000L, 0.5, 800_000L);
         }else if(price < 600_000_000){
-            rule = new BrokerageRule(0.4, null);
+            rule = new BrokerageRule(600_000_000L, 0.4, null);
         }else if(price < 900_000_000){
-            rule = new BrokerageRule(0.5, null);
+            rule = new BrokerageRule(900_000_000L, 0.5, null);
         }else {
-            rule = new BrokerageRule(0.9, null);
+            rule = new BrokerageRule(Long.MAX_VALUE,0.9, null);
         }
         return rule;
     }

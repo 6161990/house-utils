@@ -8,6 +8,8 @@ import org.springframework.lang.Nullable;
  */
 @AllArgsConstructor
 public class BrokerageRule {
+
+    private Long lessThan;
     private Double brokeragePercent;
 
     @Nullable
