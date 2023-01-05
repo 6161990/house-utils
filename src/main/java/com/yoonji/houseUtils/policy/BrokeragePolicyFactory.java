@@ -1,6 +1,9 @@
 package com.yoonji.houseUtils.policy;
 
 import com.yoonji.houseUtils.constants.ActionType;
+import com.yoonji.houseUtils.exception.ErrorCode;
+import com.yoonji.houseUtils.exception.HouseUtilsException;
+
 /**
  * ActionType 에 따라 BrokeragePolicy 를 생성하는 책임
  * */
@@ -13,7 +16,7 @@ public class BrokeragePolicyFactory {
             case PURCHASE:
                 return new PurchaseBrokeragePolicy();
             default:
-                throw new IllegalArgumentException("해당 ActionType 에 대한 정책이 존재하지 않습니다.");
+                throw new HouseUtilsException(ErrorCode.INVALID_REQUEST, "해당 ActionType 에 대한 정책이 존재하지 않습니다.");
         }
     }
 }
