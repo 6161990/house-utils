@@ -9,12 +9,16 @@ import com.yoonji.houseUtils.exception.HouseUtilsException;
  * */
 public class BrokeragePolicyFactory {
 
+    private static final PurchaseBrokeragePolicy purchaseBrokeragePolicy = new PurchaseBrokeragePolicy();
+    private static final RentBrokeragePolicy rentBrokeragePolicy = new RentBrokeragePolicy();
+
+
     public static BrokeragePolicy of(ActionType actionType){
         switch (actionType){
             case RENT:
-                return new RentBrokeragePolicy();
+                return rentBrokeragePolicy;
             case PURCHASE:
-                return new PurchaseBrokeragePolicy();
+                return purchaseBrokeragePolicy;
             default:
                 throw new HouseUtilsException(ErrorCode.INVALID_REQUEST, "해당 ActionType 에 대한 정책이 존재하지 않습니다.");
         }
