@@ -1,10 +1,18 @@
 package com.yoonji.houseUtils.policy;
 
+import com.yoonji.houseUtils.exception.ErrorCode;
+import com.yoonji.houseUtils.exception.HouseUtilsException;
+
+import java.util.List;
+
 public interface BrokeragePolicy {
-    BrokerageRule createBrokerageRule(Long price);
+
+    List<BrokerageRule> getRules();
+
     default Long calculate(Long price){
-        BrokerageRule rule = createBrokerageRule(price);
-        return rule.calcMaxBrokerage(price);
+        BrokerageRule brokerageRule = getRules().stream().filter(rule -> price < rule.getLessThan())
+                .findFirst().orElseThrow(() -> new HouseUtilsException(ErrorCode.INTERVAL_ERROR));
+        return brokerageRule.calcMaxBrokerage(price);
     }
 
 }

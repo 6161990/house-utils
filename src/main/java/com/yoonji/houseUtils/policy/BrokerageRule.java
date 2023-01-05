@@ -1,6 +1,7 @@
 package com.yoonji.houseUtils.policy;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.lang.Nullable;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.lang.Nullable;
 @AllArgsConstructor
 public class BrokerageRule {
 
+    @Getter
     private Long lessThan;
     private Double brokeragePercent;
 
