@@ -16,9 +16,9 @@ public class RentBrokeragePolicy implements BrokeragePolicy{
         rules = Arrays.asList(
                 new BrokerageRule(50_000_000L, 0.5, 200_000L),
                 new BrokerageRule(100_000_000L, 0.4, 300_000L),
-                new BrokerageRule(300_000_000L, 0.3, null),
-                new BrokerageRule(600_000_000L, 0.4, null),
-                new BrokerageRule(Long.MAX_VALUE, 0.8, null)
+                new BrokerageRule(300_000_000L, 0.3),
+                new BrokerageRule(600_000_000L, 0.4),
+                new BrokerageRule(Long.MAX_VALUE, 0.8)
         );
     }
 }
