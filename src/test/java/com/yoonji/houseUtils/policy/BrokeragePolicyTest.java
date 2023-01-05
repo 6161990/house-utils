@@ -18,10 +18,6 @@ class BrokeragePolicyTest {
 
     @Test
     void purchaseBrokeragePolicy_test() {
-        Long price = 30_000_000L;
-
-        Long actual = purchaseBrokeragePolicy.calculate(price);
-
-        assertThat(actual).isEqualTo(180_000L);
+        assertThat(purchaseBrokeragePolicy.calculate(30_000_000L)).isEqualTo(180_000L);
     }
 }
